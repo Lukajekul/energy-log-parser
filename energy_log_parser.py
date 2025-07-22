@@ -66,7 +66,7 @@ def main():
     path = input("Enter the data input root path -->")
     output = input("Enter the data output root path -->")
     if output[-4:] != ".csv" or input[-4:] != ".txt":
-        print("the path/file does not end with .csv")
+        print("the path/file does not end with .csv or .txt")
         print("Terminating the program.")
         return
     start_time = time.time()
