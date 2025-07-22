@@ -1,5 +1,6 @@
 import csv
 import time
+import sys
 
 full_list = [["time","Avg_I_L1","Min_I_L1","Max_I_L1","Avg_I_L2","Min_I_L2","Max_I_L2","Avg_I_L3","Min_I_L3","Max_I_L3","Avg_U_L1","Min_U_L1","Max_U_L1","Avg_U_L2","Min_U_L2","Max_U_L2","Avg_U_L3","Min_U_L3","Max_U_L3","Avg_b_charge","Min_b_charge","Max_b_charge","Avg_P","Min_P","Max_P","Avg_Q","Min_Q","Max_Q"]]
 
@@ -16,16 +17,20 @@ order = ["L1MWI","L1MII","L1MAI",
 
 def open_write(path):
     dated_dictionary = {}
-    with open(path) as folder:
-        for line in folder:
-            split_line = line.split(";")
-            split_line[0] += " " + split_line[1]
-            split_line.pop(1)
-            if split_line[0] not in dated_dictionary:
-                dated_dictionary[split_line[0]] = [split_line]
-            else : 
-                dated_dictionary[split_line[0]].append(split_line)
-    return dated_dictionary
+    try: 
+        with open(path) as folder:
+            for line in folder:
+                split_line = line.split(";")
+                split_line[0] += " " + split_line[1]
+                split_line.pop(1)
+                if split_line[0] not in dated_dictionary:
+                    dated_dictionary[split_line[0]] = [split_line]
+                else : 
+                    dated_dictionary[split_line[0]].append(split_line)
+        return dated_dictionary
+    except FileNotFoundError:
+        print("Input path is invalid or does not exist")
+        sys.exit("Terminating program due to file error.")
 
 def check_for_condition(dated_dictionary, output):
     for date in dated_dictionary:
@@ -49,13 +54,21 @@ def form_print(list_with_data, dated_dictionary, output):
         write(full_list, output)
     
 def write(line, output):
-    with open(output, mode="a", newline="") as finall_input:
-        csv_writer = csv.writer(finall_input, delimiter=";")
-        csv_writer.writerows(line)
+    try:
+        with open(output, mode="a", newline="") as finall_input:
+            csv_writer = csv.writer(finall_input, delimiter=";")
+            csv_writer.writerows(line)
+    except FileNotFoundError:
+        sys.exit("The output path does not exist.")
 
 def main():
+    print("Input the input and output paths, if the output file doesnt exist, the program will create it's own file.")
     path = input("Enter the data input root path -->")
     output = input("Enter the data output root path -->")
+    if output[-4:] != ".csv" or input[-4:] != ".txt":
+        print("the path/file does not end with .csv")
+        print("Terminating the program.")
+        return
     start_time = time.time()
     dated_dictionary = open_write(path)
     check_for_condition(dated_dictionary, output)

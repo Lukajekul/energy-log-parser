@@ -35,8 +35,14 @@ examples are given in the repository:
 
 ## Probable problems 
 
-- There is no error handling in the code, so if a wrong or non-existent path is provided, it will crash.
 - When opening the file in Excel, depending on your settings, the . used as a decimal point might be misinterpreted as a date.
+
+## Error handeling
+
+- Input does not end with .txt
+- Input path does not exist
+- Output does not end with .csv
+- Otput path does not exist
 
 ## License
 
