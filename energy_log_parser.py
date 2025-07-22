@@ -9,7 +9,7 @@ order = ["L1MWI","L1MII","L1MAI",
          "L1MWU","L1MIU","L1MAU",
          "L2MWU","L2MIU","L2MAU",
          "L3MWU","L3MIU","L3MAU",
-         "MWB","MIBATT_LADESTAND","MABATT_LADESTAND",
+         "MWBATT_LADESTAND","MIBATT_LADESTAND","MABATT_LADESTAND",
          "MWP", "MIP", "MAP",
          "MWQ", "MIQ", "MAQ",
 ]
