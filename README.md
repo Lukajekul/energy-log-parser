@@ -46,7 +46,5 @@ examples are given in the repository:
 
 ## License
 
-This project is for demonstration purposes only.
-
-All rights reserved. You may not use, copy, modify, or distribute this code without explicit written permission from the author.  
-See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License.  
+See the [LICENSE](LICENSE) file for details.
