@@ -42,7 +42,7 @@ examples are given in the repository:
 - Input does not end with .txt
 - Input path does not exist
 - Output does not end with .csv
-- Otput path does not exist
+- Output path does not exist
 
 ## License
 
