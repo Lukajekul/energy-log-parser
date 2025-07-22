@@ -50,7 +50,7 @@ def form_print(list_with_data, dated_dictionary, output):
     
 def write(line, output):
     with open(output, mode="a", newline="") as finall_input:
-        csv_writer = csv.writer(finall_input)
+        csv_writer = csv.writer(finall_input, delimiter=";")
         csv_writer.writerows(line)
 
 def main():
